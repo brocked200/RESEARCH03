@@ -90,7 +90,7 @@ Thành công bypass được phần kiểm tra quyền admin. Vì insert bị l�
 - Nếu thành công sẽ có truy vấn tới burp collab
 ![image](https://user-images.githubusercontent.com/52159161/228825080-1dfd9a92-303e-4a9a-a8c7-a6986a6c1974.png)
 
-- Vì cơ chế DNSSEC (Domain Name System Security Extensions) do đó khi truy vấn    do đó người chơi cần sử dụng command kèm theo đưa nó về hex sau đó cắt chuỗi nếu dài quá và gộp từng chuỗi lại. Đưa tất cả chuỗi đó về in thường và decode hex sẽ ra được flag. 
+- Vì cơ chế DNSSEC (Domain Name System Security Extensions) do đó khi truy vấn các kí tự chuỗi nhận được sẽ ngầu nhiên hoa thường khác nhau mỗi lần truy vấn do đó người chơi cần sử dụng command kèm theo đưa nó về hex sau đó cắt chuỗi nếu dài quá và gộp từng chuỗi lại. Đưa tất cả chuỗi đó về in thường và decode hex sẽ ra được flag. 
 Command hint:
 ```
 "__proto__": {
