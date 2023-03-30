@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  mysql:
+    build: ./db
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    platform: linux/x86_64
+    image: mysql:8.0
+    container_name: mysql-nodejs
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 123123
+      MYSQL_DATABASE: ctf_prototypePollution
+    ports:
+     - "3308:3306"  
+    volumes:
+    # Mysql
+    - db:/var/lib/mysql
+    - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks: 
+      - nodejss
+
+  web:
+    depends_on:
+      - mysql
+    build: ./web
+    command: ["dockerize", "-wait", "tcp://mysql:3306", "-timeout", "60s", "npm", "start"]
+    ports: 
+     - "3000:3000"
+    volumes:
+    - ./myapp/:/app
+    restart: unless-stopped
+    container_name: nodejs
+    stdin_open: true
+    tty: true
+    networks: 
+      - nodejss
+
+volumes:
+  db:
+
+networks:
+  nodejss:
+

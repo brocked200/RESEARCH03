@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mysql:
+    build: ./db
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    expose:
+      - 3306
+    networks: 
+      - app_network 
+
+  app:
+    container_name: my-app
+    build: ./web
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+      - /app/web/node_modules
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+
+networks: 
+  app_network: 

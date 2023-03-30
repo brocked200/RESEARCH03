@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+
+<h1>Đăng nhập</h1>
+<form action="/login" method="POST">
+  <label for="username">Tên đăng nhập:</label>
+  <input type="text" name="username" id="username" required>
+  <br>
+  <label for="password">Mật khẩu:</label>
+  <input type="password" name="password" id="password" required>
+  <br>
+  <button type="submit">Đăng nhập</button>
+</form>
+<a href="/register">Chưa có tài khoản? Đăng ký</a>
+
+<%- include('partials/footer') %>
+

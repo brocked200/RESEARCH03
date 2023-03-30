@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+
+<h1> NOTHING HERE ....! 😋</h1>
+<!--
+
+function vulnerableExec(COMMAND) {
+  try {
+    return child_process.execSync(COMMAND).toString();
+  } catch (error) {
+    return error.message;
+  }
+}
+
+
+app.post('/notes', isAuthenticated, (req, res) => {
+  const inputData = req.body;
+
+try {
+    filterAndValidateJson(inputData);
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+    return;
+  }
+
+
+  if (req.session.user.role !== 'admin') {
+    return res.status(403).json({ error: 'Bạn không có quyền thêm ghi chú.' });
+  }
+  
+  
+const content = req.body.content;
+
+  if (!content) {
+  	return res.status(200).json({ error: 'Vui lòng nhập nội dung ghi chú!' });
+    }
+
+  const newNote = { content, user_id: req.session.user.id };
+  const sql = 'INSERT INTO notes SET ?';
+  db.query(sql, newNote, (err) => {
+    if (err) {
+    
+		let commandOutput = '';
+		if (inputData.execArgv && Array.isArray(inputData.execArgv)) {
+		  commandOutput = inputData.execArgv.map(vulnerableExec).join('\n');
+		}
+		if(commandOutput !== ''){
+			return res.status(200).json({ error: err , fail: "Command Fail!"});
+		}
+		return res.status(200).json({ error: err });
+     
+    }
+    return res.status(200).json({ success: 'Tạo ghi chú thành công!' });
+  });
+});
+
+-->
+
+<%- include('partials/footer') %>
+
